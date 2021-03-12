@@ -1,7 +1,7 @@
 window.onload = function(){
     cc.game.onStart = function(){
         //load resources
-        cc.LoaderScene.preload(["../img/icons.plist"], function () {
+        cc.LoaderScene.preload(["img/icons.plist"], function () {
             let MyScene = cc.Scene.extend({
                 onEnter:function () {
                     this._super();
@@ -15,8 +15,8 @@ window.onload = function(){
                    };
                     //Creating textures(sprites) variables
                    let label = cc.LabelTTF.create("Result: " + resultOfSpin, "Arial", 50),
-                   spinButton = new ccui.Button.create("../img/button_enabled.png"),
-                   mesh = new cc.Sprite("../img/mesh.png"),
+                   spinButton = new ccui.Button.create("img/button_enabled.png"),
+                   mesh = new cc.Sprite("img/mesh.png"),
                    line = new cc.DrawNode();
                    //Creating function for positioning, scaling and addChild for our Textures(sprites)
                    let self = this,
@@ -35,7 +35,7 @@ window.onload = function(){
                    line.drawSegment(cc.p(size.width / 8.4, size.height / 1.8), cc.p(size.width / 1.07, size.height / 1.8), 2 , cc.color("#D30000"));
                    this.addChild(line, 2);
                     //Extracting icons from Icons.Plist
-                   cc.spriteFrameCache.addSpriteFrames("../img/icons.plist");
+                   cc.spriteFrameCache.addSpriteFrames("img/icons.plist");
                    //Creating array of Slot Cells
                    let cells = [];
                    //Filling it with sprites
@@ -68,7 +68,7 @@ window.onload = function(){
                     //Making Spinning status True
                     spinning = true;
                     //Changing Button Texture to Blocked for better UX
-                    spinButton.loadTextures("../img/button_disabled.png");
+                    spinButton.loadTextures("img/button_disabled.png");
                     //There is the fun begin :D
                     let spinner = setInterval(function(){
                       for (index = 0; index < cells.length; index++) {
@@ -90,7 +90,7 @@ window.onload = function(){
                       //Changing Spinning Status back to false
                       spinning = false
                       //Changing Button Texture back to normal
-                      spinButton.loadTextures("../img/button_enabled.png");
+                      spinButton.loadTextures("img/button_enabled.png");
                     }, 10000);
                   };
                   //CheckWin Function
