@@ -2,10 +2,10 @@ window.onload = function(){
     cc.game.onStart = function(){
         //load resources
         cc.LoaderScene.preload(["../img/icons.plist"], function () {
-            var MyScene = cc.Scene.extend({
+            let MyScene = cc.Scene.extend({
                 onEnter:function () {
                     this._super();
-                    var size = cc.director.getWinSize();
+                    let size = cc.director.getWinSize();
                     let resultOfSpin = "";
                     let spinning = false;
                     //Get random int function
@@ -54,7 +54,46 @@ window.onload = function(){
                       pos_index++;
                     }
                   };
-                  
+                  cellsPositioning(0,3,0); //Top row positioning
+                  cellsPositioning(3,6,1); // Middle Row positioning
+                  cellsPositioning(6,9,2); // Bottom Row positioning
+                  //Our Spin Function ;)
+                  let makeSpin = function () {
+                    //Deleting Win/Not Win text from label before the new spin, adding three dots for better UX
+                    label.setString("Result:  ...  ");
+                    //Prevent from Button click while Spinning
+                    if(spinning) {
+                      return;
+                    }
+                    //Making Spinning status True
+                    spinning = true;
+                    //Changing Button Texture to Blocked for better UX
+                    spinButton.loadTextures("resources/button_disabled.png");
+                    //There is the fun begin :D
+                    let spinner = setInterval(function(){
+                      for (index = 0; index < cells.length; index++) {
+                        cells[index].id = Math.floor(getRandomInt(8));
+                        cells[index].initWithSpriteFrameName("icons/" + cells[index].id + ".png"); 
+                        //It's just the illusion of spin effect, the animation is the most weak part of the project, it can be better 
+                        cells[index].runAction(cc.moveBy(0.1, 0 , -10));
+                        cellsPositioning(0,3,0);
+                        cellsPositioning(3,6,1);
+                        cellsPositioning(6,9,2);
+                      }
+                    }, 200)
+                    //Stop Spin in 10 Sec
+                    setTimeout(function() { 
+                      //Stop SetInterval function
+                      clearInterval(spinner); 
+                      //Checking for Winning combo
+                      checkWin();
+                      //Changing Spinning Status back to false
+                      spinning = false
+                      //Changing Button Texture back to normal
+                      spinButton.loadTextures("resources/button_enabled.png");
+                    }, 10000);
+                  };
+
                    
                 }
             });
