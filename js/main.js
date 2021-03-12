@@ -114,7 +114,21 @@ window.onload = function(){
                       resultOfSpin = "Not Win";
                     }
                     label.setString("Result: " + resultOfSpin);
+                  };
+                   //Adding event listener for Spin Button
+                   var touchEvent = function (sender,  type) {
+                    switch (type) {
+                      case ccui.Widget.TOUCH_ENDED:
+                      //Increase scale on click for better UX
+                      spinButton.setScale(1.5);
+                      //StartSpin
+                      makeSpin();
+                      break;
+                      //Default, just in case something goes wrong ;)
+                      default: break;
+                    }
                   }
+                  spinButton.addTouchEventListener( touchEvent, this );
 
                    
                 }
