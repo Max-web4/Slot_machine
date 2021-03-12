@@ -34,7 +34,16 @@ window.onload = function(){
                    //Winning Indicator Red Line
                    line.drawSegment(cc.p(size.width / 8.4, size.height / 1.8), cc.p(size.width / 1.07, size.height / 1.8), 2 , cc.color("#D30000"));
                    this.addChild(line, 2);
-                   
+                    //Extracting icons from Icons.Plist
+                   cc.spriteFrameCache.addSpriteFrames("../img/icons.plist");
+                   //Creating array of Slot Cells
+                   let cells = [];
+                   //Filling it with sprites
+                   for (let index = 0; index < 9; index++) {
+                    cells.push(new cc.Sprite(cc.spriteFrameCache.getSpriteFrame("icons/" + Math.floor(getRandomInt(8)) + ".png")));
+                    this.addChild(cells[index], 1);
+                   cells[index].setScale(1);
+                   }
                     
                    
                 }
