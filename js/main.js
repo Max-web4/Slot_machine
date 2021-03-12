@@ -14,7 +14,7 @@ window.onload = function(){
                     return Math.random() * int;
                    };
                     //Creating textures(sprites) variables
-                   let label = cc.LabelTTF.create("Result: " + resultOfSpin),
+                   let label = cc.LabelTTF.create("Result: " + resultOfSpin, "Arial", 50),
                    spinButton = new ccui.Button.create("../img/button_enabled.png"),
                    mesh = new cc.Sprite("../img/mesh.png"),
                    line = new cc.DrawNode();
@@ -68,7 +68,7 @@ window.onload = function(){
                     //Making Spinning status True
                     spinning = true;
                     //Changing Button Texture to Blocked for better UX
-                    spinButton.loadTextures("resources/button_disabled.png");
+                    spinButton.loadTextures("../img/button_disabled.png");
                     //There is the fun begin :D
                     let spinner = setInterval(function(){
                       for (index = 0; index < cells.length; index++) {
@@ -90,7 +90,7 @@ window.onload = function(){
                       //Changing Spinning Status back to false
                       spinning = false
                       //Changing Button Texture back to normal
-                      spinButton.loadTextures("resources/button_enabled.png");
+                      spinButton.loadTextures("../img/button_enabled.png");
                     }, 10000);
                   };
                   //CheckWin Function
