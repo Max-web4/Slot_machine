@@ -93,6 +93,28 @@ window.onload = function(){
                       spinButton.loadTextures("resources/button_enabled.png");
                     }, 10000);
                   };
+                  //CheckWin Function
+                  let checkWin = function () {
+                    //If 3 empty cells - NOT WIN
+                    if (cells[3].id === 5 
+                      && cells[4].id === 5 
+                      && cells[5].id === 5) 
+                    {
+                      resultOfSpin = "Not Win";
+                    } //If 3 same cells - WIN
+                    else if (cells[3].id === cells[4].id 
+                      && cells[3].id === cells[5].id 
+                      && cells[4].id === cells[5].id) 
+                    {
+                      resultOfSpin = "Win";
+                    }
+                      //Else 3 different cells - NOT WIN
+                    else 
+                    {
+                      resultOfSpin = "Not Win";
+                    }
+                    label.setString("Result: " + resultOfSpin);
+                  }
 
                    
                 }
