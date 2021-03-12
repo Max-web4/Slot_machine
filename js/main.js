@@ -14,13 +14,13 @@ window.onload = function(){
                     return Math.random() * int;
                    };
                     //Creating textures(sprites) variables
-                   let label = cc.LabelTTF.create("Result: " + resultOfSpin);
-                   let spinButton = new ccui.Button.create("../img/button_enabled.png");
-                   let mesh = new cc.Sprite("../img/mesh.png");
-                   let line = new cc.DrawNode();
+                   let label = cc.LabelTTF.create("Result: " + resultOfSpin),
+                   spinButton = new ccui.Button.create("../img/button_enabled.png"),
+                   mesh = new cc.Sprite("../img/mesh.png"),
+                   line = new cc.DrawNode();
                    //Creating function for positioning, scaling and addChild for our Textures(sprites)
-                   let self = this;
-                   let textureCustomizer = function (texture, xAxis, yAxis, scaleValue, z_Index) {
+                   let self = this,
+                   textureCustomizer = function (texture, xAxis, yAxis, scaleValue, z_Index) {
                     texture.setPosition(size.width / xAxis, size.height / yAxis);
                     texture.setScale(scaleValue);
                     self.addChild(texture, z_Index);
@@ -43,7 +43,7 @@ window.onload = function(){
                     cells.push(new cc.Sprite(cc.spriteFrameCache.getSpriteFrame("icons/" + Math.floor(getRandomInt(8)) + ".png")));
                     this.addChild(cells[index], 1);
                    cells[index].setScale(1);
-                   }
+                   };
                    //Cells positioning by Rows function 
                   let cellsPositioning = function(initialIndex, maxIndex, yAxisIndex) {
                     let Y_pos = [1.32, 1.8, 2.8],
@@ -53,7 +53,8 @@ window.onload = function(){
                       cells[idx].setPosition(size.width / X_pos[pos_index], size.height / Y_pos[yAxisIndex]);
                       pos_index++;
                     }
-                  } 
+                  };
+                  
                    
                 }
             });
