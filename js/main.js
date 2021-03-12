@@ -44,7 +44,16 @@ window.onload = function(){
                     this.addChild(cells[index], 1);
                    cells[index].setScale(1);
                    }
-                    
+                   //Cells positioning by Rows function 
+                  let cellsPositioning = function(initialIndex, maxIndex, yAxisIndex) {
+                    let Y_pos = [1.32, 1.8, 2.8],
+                        X_pos = [4, 1.9, 1.25],
+                        pos_index = 0;
+                    for (let idx = initialIndex; idx < maxIndex; idx++) {
+                      cells[idx].setPosition(size.width / X_pos[pos_index], size.height / Y_pos[yAxisIndex]);
+                      pos_index++;
+                    }
+                  } 
                    
                 }
             });
